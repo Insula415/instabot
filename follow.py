@@ -33,7 +33,10 @@ class InstaBot:
         options = webdriver.ChromeOptions()
         options.add_experimental_option("debuggerAddress", "localhost:9222")
 
-        ser = Service("C:\\Users\\ciara\\OneDrive\Desktop\\coding\\chromedriver.exe")
+        with open("chrome.txt", "r") as f: # getting chrome driver path
+            file = f.read()
+        
+        ser = Service(file)
         self.driver = webdriver.Chrome(service=ser, options=options)
 
         # self.driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
